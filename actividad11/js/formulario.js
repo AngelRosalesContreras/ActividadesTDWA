@@ -11,6 +11,12 @@ function limpiarFormulario(){
   document.getElementById('til').style.color = 'black';
   document.getElementById('rect').style.background = '#EBF4FF';
   document.getElementById('rect').style.color = 'black';
+  document.getElementById('des').style.background = '#EBF4FF';
+  document.getElementById('myTextarea').style.background = 'white';
+  document.getElementById('des').style.color = 'black';
+  document.getElementById('des').style.background = '#EBF4FF';
+  contenido.style.background = 'white';
+  document.getElementById('des').style.color = 'black';
 }
 
 function validarTitulo(e){
@@ -29,10 +35,18 @@ function validarTitulo(e){
 }
 
 function validarContenido(e){
-  if(contenido.value === null || contenido.value === ''){
+  if(contenido.value === null || contenido.value === '' || contenido.value.length == 0 || /^\s+$/.test(contenido.value)){
+    console.log('como tas!!');
     error.style.display = 'block';
     document.getElementById('des').style.background = 'red';
+    contenido.style.background = 'red';
+    document.getElementById('des').style.color = 'white';
     e.preventDefault();
+  }
+  else {
+    document.getElementById('des').style.background = '#EBF4FF';
+    contenido.style.background = 'white';
+    document.getElementById('des').style.color = 'black';
   }
 }
 
@@ -55,7 +69,6 @@ function validar(e){
   validarContenido(e);
   validarLicencia(e);
 }
-
 
 const formulario = document.querySelector('#formulario');
 formulario.addEventListener('submit',validar);
